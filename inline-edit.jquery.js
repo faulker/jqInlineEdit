@@ -47,6 +47,8 @@ $(function ($) {
         }
 
         var saveChanges = function () {
+            var oldStr = $oldThis.text().trim();
+
             switch (this.nodeName) {
                 case 'SELECT':
                     newValue = $(this).find(':selected').text();
@@ -56,12 +58,12 @@ $(function ($) {
                     newValue = $(this).val();
             }
 
-            newHtml = $oldThis.html().replace($oldThis.text(), newValue);
+            newHtml = $oldThis.html().replace(oldStr, newValue);
 
             $(this).parent().html(newHtml);
-            running = false;
 
             saveEvent(this);
+            running = false;
         }
 
         var saveEvent = function (e) {
@@ -96,11 +98,15 @@ $(function ($) {
             output.push('<select class="' + className + '" ' + customData + '>');
 
             for (var key in $value) {
-                var selected = '';
-                if ($this.text() === $value[key]) {
+                var selected = '',
+                    oldStr = $this.text().trim(),
+                    newStr = $value[key].trim();
+
+                if (oldStr === newStr) {
                     selected = 'selected="selected"'
                 }
-                output.push('<option value="' + key + '"' + selected + '>' + $value[key] + '</option>');
+
+                output.push('<option value="' + key + '"' + selected + '>' + newStr + '</option>');
             }
             output.push('</select>');
 
@@ -109,7 +115,12 @@ $(function ($) {
 
         var buildInlineText = function ($this) {
             var className = (settings.className !== undefined) ? settings.className : '',
-                customData = '';
+                customData = '',
+                str = $this.text();
+
+            if (settings.trim) {
+                str = str.trim();
+            }
 
             if (settings.hasOwnProperty('customData')) {
                 for (var cdKey in settings.customData) {
@@ -117,12 +128,17 @@ $(function ($) {
                 }
             }
 
-            return '<input type="text" class="' + className + '" value="' + $this.text() + '" ' + customData + '>';
+            return '<input type="text" class="' + className + '" value="' + str + '" ' + customData + '>';
         }
 
         var buildInlineTextarea = function ($this) {
             var className = (settings.className !== undefined) ? settings.className : '',
-                customData = '';
+                customData = '',
+                str = $this.text();
+
+            if (settings.trim) {
+                str = str.trim();
+            }
 
             if (settings.hasOwnProperty('customData')) {
                 for (var cdKey in settings.customData) {
@@ -130,7 +146,7 @@ $(function ($) {
                 }
             }
 
-            return '<textarea class="' + className + '" ' + customData + '>' + $this.text() + '</textarea>';
+            return '<textarea class="' + className + '" ' + customData + '>' + str + '</textarea>';
         }
 
         // Init each instance of the plugin
@@ -146,6 +162,7 @@ $(function ($) {
         on: 'click',
         className: null,
         data: null,
+        trim: true,
         onChange: function (el, theText, theHtml) {
         },
         onEdit: function (el) {
