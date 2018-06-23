@@ -67,7 +67,13 @@ $(function ($) {
         }
 
         var saveEvent = function (e) {
-            if ($oldThis.text() !== newValue) {
+            var oldStr = $oldThis.text();
+
+            if (settings.trim) {
+                oldStr = oldStr.trim();
+            }
+
+            if (oldStr !== newValue) {
                 if (settings.hasOwnProperty('onChange')) {
                     settings.onChange($this, $(e).val(), newHtml);
                 }
