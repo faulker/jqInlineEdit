@@ -5,9 +5,6 @@
 
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="prism.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="../inline-edit.jquery.js"></script>
   <style>
     body {
       margin: 10px auto;
@@ -29,7 +26,12 @@
       margin-bottom: 10px;
     }
 
-    .properties {}
+    .github-btn {
+      width: 100px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
   </style>
 </head>
 
@@ -40,11 +42,15 @@
 
         <h2 class="text-center">Inline Edit Example</h2>
 
+        <a href="https://github.com/faulker/jqInlineEdit" class="btn btn-primary github-btn">GitHub</a>
+
         <div class="example">
           <table class="table table-striped">
             <tbody>
               <tr>
-                <td id="example-text"><button class="btn btn-success">Click Me</button></td>
+                <td id="example-text">
+                  <button class="btn btn-success">Click Me</button>
+                </td>
                 <td>Allows you to do a inline edit using a text input.</td>
                 <td>Status:
                   <span id="example-text-status" class="label">Not being edited</span>
@@ -76,7 +82,9 @@ $("#example-text").inlineEdit({
                 </td>
               </tr>
               <tr>
-                <td id="example-select"><button class="btn btn-success">Click Me</button></td>
+                <td id="example-select">
+                  <button class="btn btn-success">Click Me</button>
+                </td>
                 <td>Allows you to do a inline edit using a select.</td>
                 <td>Status:
                   <span id="example-select-status" class="label">Not being edited</span>
@@ -114,7 +122,9 @@ $("#example-select").inlineEdit({
                 </td>
               </tr>
               <tr>
-                <td id="example-textarea"><button class="btn btn-success">Click Me</button></td>
+                <td id="example-textarea">
+                  <button class="btn btn-success">Click Me</button>
+                </td>
                 <td>Allows you to do a inline edit using a textarea.</td>
                 <td>Status:
                   <span id="example-textarea-status" class="label">Not being edited</span>
@@ -239,9 +249,12 @@ $("#example-textarea").inlineEdit({
                 </td>
                 <td>
                   <ul>
-                    <li><strong>this</strong>: the original element with the new value</li>
-                    <li><strong>text</strong>: the new value</li>
-                    <li><strong>html</strong>: the html and text of the new value</li>
+                    <li>
+                      <strong>this</strong>: the original element with the new value</li>
+                    <li>
+                      <strong>text</strong>: the new value</li>
+                    <li>
+                      <strong>html</strong>: the html and text of the new value</li>
                   </ul>
                 </td>
                 <td>Executes when exiting inline edit mode and a change has been made</td>
@@ -252,7 +265,8 @@ $("#example-textarea").inlineEdit({
                 </td>
                 <td>
                   <ul>
-                    <li><strong>this</strong>: the original element with the new value</li>
+                    <li>
+                      <strong>this</strong>: the original element with the new value</li>
                   </ul>
                 </td>
                 <td>Executes when entering inline edit mode</td>
@@ -263,7 +277,8 @@ $("#example-textarea").inlineEdit({
                 </td>
                 <td>
                   <ul>
-                    <li><strong>this</strong>: the original element with the new value</li>
+                    <li>
+                      <strong>this</strong>: the original element with the new value</li>
                   </ul>
                 </td>
                 <td>Executes when exiting inline edit mode but no change has been made</td>
@@ -297,16 +312,18 @@ $("#example-textarea").inlineEdit({
                 <td>Fires when entering inline edit mode</td>
               </tr>
               <tr>
-                  <td>
-                    <strong>inlineEdit.on.noChange</strong>
-                  </td>
-                  <td>Fires when exiting inline edit mode but no change has been made</td>
-                </tr>
+                <td>
+                  <strong>inlineEdit.on.noChange</strong>
+                </td>
+                <td>Fires when exiting inline edit mode but no change has been made</td>
+              </tr>
             </tbody>
           </table>
         </dvi>
       </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../inline-edit.jquery.js"></script>
     <script src="prism.js"></script>
 </body>
 <script type="text/javascript">
