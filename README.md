@@ -11,7 +11,7 @@ Load the plugin
 
 ```
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.31/jquery.min.js"></script>
-<script src="../inline-edit.jquery.js"></script>
+<script src="inline-edit.jquery.js"></script>
 ```
 
 HTML
@@ -44,6 +44,7 @@ $("#example-text").inlineEdit({
 - on (click, dblclick, etc.) - This is how the inline edit will be triggered
 - customData - Custom properties to add to the inline edit tag
 - data - Options for the select as a key:value object
+- trim (true/false) - Trim whitespace around text before loading into the text input or textarea
 
 #### Methods
 - onChange(this, text, html) - Executes when exiting inline edit mode and a change has been made
